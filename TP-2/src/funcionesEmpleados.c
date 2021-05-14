@@ -69,7 +69,7 @@ int pedirDatosEmpleado(eEmpleados array[], int largoArray, int *contadorID){
 	if(array != NULL && largoArray>0 && contadorID != NULL){
 		if(pedirNombre("Ingrese nombre del empleado: ", "Nombre no valido. ", 1, sizeof(auxNombre), 3, auxNombre) == 0 &&
 				pedirNombre("Ingrese apellido del empleado: ","Apellido no valido. ", 1, sizeof(auxApellido), 3, auxApellido) == 0 &&
-				pedirNumeroEntero(&auxSector, "Ingrese numero de sector del empleado: ", "Sector no valido. ", 1, 5, 3) == 0 &&
+				pedirNumeroEntero(&auxSector, "Ingrese numero de sector del empleado: ", "Sector no valido. Debe elegir un sector del 1 al 5. ", 1, 5, 3) == 0 &&
 				pedirNumeroFlotante(&auxSalario, "Ingrese salario del empleado: ", "Salario no valido. ", 30000, 100000, 3) == 0){
 
 			(*contadorID) += 1;
@@ -152,7 +152,7 @@ int modificarEmpleado(eEmpleados array[], int largoArray, int idEmpleado){
 				case 4:
 					system("CLS");
 					printf("Modificar sector: \n");
-					if(pedirNumeroEntero(&auxSector, "Ingrese sector: ", "Sector no valido. ", 1, 5, 3) == 0){
+					if(pedirNumeroEntero(&auxSector, "Ingrese sector: ", "Sector no valido. Debe elegir un sector del 1 al 5.", 1, 5, 3) == 0){
 						retorno = 0;
 						array[indexEmpleado].sector = auxSector;
 					}else{

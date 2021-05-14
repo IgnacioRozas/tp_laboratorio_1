@@ -56,7 +56,7 @@ int main(void) {
 				// Modificar empleado.
 				system("CLS");
 				if(flagCarga == 1){
-					if(pedirNumeroEntero(&idEmpleadoModificacion, "Ingrese ID del empleado a modificar: ", "ID no valido. ", 1, 1000, 3) == 0){
+					if(pedirNumeroEntero(&idEmpleadoModificacion, "Ingrese ID del empleado a modificar: ", "ID no valido. ", 1, 1001, 3) == 0){
 						if(modificarEmpleado(arrayEmpleados, TAMEMPLEADOS, idEmpleadoModificacion) == 0){
 							printf("Empleado modificado con exito. \n");
 						}else{
