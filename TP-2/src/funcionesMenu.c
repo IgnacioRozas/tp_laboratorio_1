@@ -25,6 +25,6 @@ void menuModificaciones(){
 }
 
 void menuInformes(){
-	printf("Opcion 1: Listado de empleados ordenados alfabeticamente por apellido y sector.");
-	printf("Opcion 2: Total y promedio de los salarios. Recuento de empleados que superan el salario promedio.");
+	printf("Opcion 1: Listado de empleados ordenados alfabeticamente por apellido y sector.\n");
+	printf("Opcion 2: Total y promedio de los salarios. Recuento de empleados que superan el salario promedio.\n");
 }

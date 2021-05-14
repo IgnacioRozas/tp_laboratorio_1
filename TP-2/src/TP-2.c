@@ -22,7 +22,10 @@ int main(void) {
 	// Variables
 	eEmpleados arrayEmpleados [TAMEMPLEADOS];
 	int opcionUsuario;
+	int opcionListados;
 	int idEmpleadoModificacion;
+	int idEmpleadoBaja;
+	int ordenListado;
 	int contadorID = 0;
 	int flagCarga = 0;
 
@@ -34,6 +37,7 @@ int main(void) {
 	do{
 		system("CLS");
 		menuEmpleados();
+		verificarCargas(arrayEmpleados,TAMEMPLEADOS, &flagCarga);
 		if(pedirNumeroEntero(&opcionUsuario, "\nIngrese la opcion deseada: ", "Opcion no valida. ", 1, 5, 3) == 0){
 			switch(opcionUsuario){
 			case 1:
@@ -69,7 +73,13 @@ int main(void) {
 				// Baja empleado.
 				system("CLS");
 				if(flagCarga == 1){
-
+					if(pedirNumeroEntero(&idEmpleadoBaja, "Ingrese ID a dar de baja: ", "ID no valido. ", 1, 1001, 3) == 0){
+						if(bajaEmpleado(arrayEmpleados, TAMEMPLEADOS, idEmpleadoBaja) == 0){
+							printf("Baja exitosa!. ");
+						}else{
+							printf("No se pudo realizar la baja!. ");
+						}
+					}
 				}else{
 					printf("No se puede dar de baja un empleado sin antes haber cargado alguno!\n");
 				}
@@ -80,7 +90,31 @@ int main(void) {
 				// Informes:
 				system("CLS");
 				if(flagCarga == 1){
-					imprimirEmpleados(arrayEmpleados, TAMEMPLEADOS);
+					menuInformes();
+					if(pedirNumeroEntero(&opcionListados, "Ingrese opcion deseada: ", "Opcion no valida. ", 1, 2, 3) == 0){
+						switch(opcionListados){
+						case 1:
+							system("CLS");
+							if(pedirNumeroEntero(&ordenListado, "Ingrese el orden del listado: \n0: orden descendente\n1: orden ascendente\nOpcion elegida: "
+									, "Opcion no valida. ", 0, 1, 3) == 0){
+								if(ordenarEmpleadosApellidoSector(arrayEmpleados,TAMEMPLEADOS,ordenListado)==0){
+									 imprimirEmpleados(arrayEmpleados, TAMEMPLEADOS);
+									 printf("\nListado exitoso!\n");
+								}else{
+									printf("\nNo se pudo realizar el listado!\n");
+								}
+							}
+							break;
+
+						case 2:
+							system("CLS");
+							if(listadoSueldos(arrayEmpleados, TAMEMPLEADOS)==0){
+								printf("\nListado exitoso!\n");
+							}else{
+								printf("\nNo se pudo realizar el listado.\n");
+							}
+							break;						}
+					}
 				}else{
 					printf("No se pueden mostrar los informes sin antes haber cargado algun empleado!\n");				}
 				system("PAUSE");
